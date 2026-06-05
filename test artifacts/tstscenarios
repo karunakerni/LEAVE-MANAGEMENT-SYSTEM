@@ -1,0 +1,65 @@
+Test Scenarios: Leave Management System
+
+1. Employee submits a leave request successfully
+   - Given an authenticated employee
+   - When they submit a leave request with leave type, start date, end date, and reason
+   - Then the request is created with status Pending
+   - And the request details are visible to the employee
+
+2. Employee views leave request status
+   - Given an employee with existing leave requests
+   - When they view their leave history
+   - Then each request shows the correct status: Pending, Approved, or Rejected
+
+3. Employee sees remaining leave balance by leave type
+   - Given an employee with entitlements for Annual, Sick, and Casual leave
+   - When they view leave balances
+   - Then the system shows remaining days for each leave type
+
+4. Manager reviews direct reports' leave requests
+   - Given a manager signed in with direct reports
+   - When they open pending leave requests for their team
+   - Then they see employee name, leave type, dates, and reason
+
+5. Manager approves a leave request
+   - Given a pending leave request from a direct report
+   - When the manager approves the request with optional comments
+   - Then the request status changes to Approved
+   - And the manager sees the approval record and comments
+
+6. Manager rejects a leave request
+   - Given a pending leave request from a direct report
+   - When the manager rejects the request with a reason
+   - Then the request status changes to Rejected
+   - And the employee can see the rejection reason
+
+7. Administrator defines a new leave type
+   - Given an administrator user
+   - When they create a leave type such as Annual or Sick
+   - Then the new type appears in the available leave type list
+
+8. Administrator configures leave entitlement values
+   - Given an administrator user
+   - When they set annual entitlement values for leave types
+   - Then the assigned entitlement is stored and shown for employees
+
+9. Overlapping approved leave validation
+   - Given an employee with an existing approved leave period
+   - When they submit a new leave request overlapping that period
+   - Then the system rejects the request or flags the overlap
+
+10. Leave days calculation on approval
+    - Given a pending leave request for a specific date range
+    - When the request is approved
+    - Then the system calculates the total leave days correctly
+    - And deducts those days from the employee's leave balance
+
+11. Summary report of leave usage
+    - Given an administrator user
+    - When they generate a leave usage report
+    - Then the report shows totals by leave type and status
+
+12. Test automation readiness
+    - Given the system supports automation
+    - When automation scripts run leave request creation and approval
+    - Then the key workflows complete without manual intervention

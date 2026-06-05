@@ -1,0 +1,21 @@
+# Maven build output
+target/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+.classpath
+.project
+.settings/
+
+# VS Code (exclude workspace settings but keep launch configs if any)
+.vscode/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Log files generated during local test runs
+test_output*.log
+*.log

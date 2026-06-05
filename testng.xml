@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="LeaveManagementSuite" parallel="false" preserve-order="true">
+    <listeners>
+        <listener class-name="com.example.leavemanagement.TestNGExtentReporter"/>
+        <listener class-name="com.example.leavemanagement.TestNGSummaryReporter"/>
+    </listeners>
+    <test name="LeaveServiceTests">
+        <classes>
+            <class name="com.example.leavemanagement.LeaveServiceTestNG"/>
+        </classes>
+    </test>
+</suite>
