@@ -2,9 +2,9 @@ name: CI - Run Tests & Upload Reports
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, Test-review ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, Test-review ]
   workflow_dispatch:
 
 jobs:
@@ -46,3 +46,37 @@ jobs:
           name: surefire-report-${{ github.run_number }}
           path: target/surefire-reports/
           retention-days: 30
+
+      - name: Send execution report via email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "CI Report - ${{ github.repository }} | Branch: ${{ github.ref_name }} | Run #${{ github.run_number }} | ${{ job.status }}"
+          to: karuna.kerni6535@gmail.com
+          from: ${{ secrets.GMAIL_USERNAME }}
+          body: |
+            Hello,
+
+            The CI pipeline for your Leave Management System has completed.
+
+            Details:
+            - Repository : ${{ github.repository }}
+            - Branch     : ${{ github.ref_name }}
+            - Commit     : ${{ github.sha }}
+            - Run Number : #${{ github.run_number }}
+            - Status     : ${{ job.status }}
+            - Triggered  : ${{ github.event_name }}
+
+            Download the full test reports from the link below:
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Reports attached to that run:
+            - extent-report-${{ github.run_number }}  (ExtentReports HTML)
+            - surefire-report-${{ github.run_number }} (Surefire XML/TXT)
+
+            Regards,
+            GitHub Actions
