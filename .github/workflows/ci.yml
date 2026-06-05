@@ -56,7 +56,7 @@ jobs:
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: "CI Report - ${{ github.repository }} | Branch: ${{ github.ref_name }} | Run #${{ github.run_number }} | ${{ job.status }}"
-          to: karuna.kerni6535@gmail.com
+          to: karuna.kerni@sixsentix.com
           from: ${{ secrets.GMAIL_USERNAME }}
           body: |
             Hello,
