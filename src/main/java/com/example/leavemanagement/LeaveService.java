@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+#I am adding this comment as a gitlab learning project
 public class LeaveService {
     private final Map<String, LeaveRequest> requests = new HashMap<>();
 
