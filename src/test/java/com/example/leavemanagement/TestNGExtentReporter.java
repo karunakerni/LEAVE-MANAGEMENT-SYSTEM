@@ -12,6 +12,7 @@ public class TestNGExtentReporter implements ITestListener {
 
     private static ExtentReports extent;
     private static final ThreadLocal<ExtentTest> TEST_THREAD = new ThreadLocal<>();
+#I am just trying to learn gitlab activities, hence doing this exercise
 
     @Override
     public void onStart(ITestContext context) {
